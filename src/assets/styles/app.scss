@@ -1,0 +1,13 @@
+@import 'components/form';
+@import 'components/buttons';
+
+//any kind of padding we have on elements does not push outside of the widths given/overlap
+* {
+    box-sizing: border-box;
+}
+
+body,html{
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}

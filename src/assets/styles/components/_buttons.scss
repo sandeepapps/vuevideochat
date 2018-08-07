@@ -1,0 +1,21 @@
+.button {
+    text-align: center;
+    border: 0;
+    border-radius: 3px;
+    font: inherit;
+    font-weight: 600;
+    padding: 15px 18px;
+    width: 100%;
+    cursor: pointer;
+    outline: none;
+
+    &--primary{
+        color: #fff;
+        background-color: #9B7CA6;
+
+
+        &:hover {
+            background-color: #8F6C9C;
+        }
+    }
+}

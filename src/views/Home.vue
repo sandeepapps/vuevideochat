@@ -1,18 +1,34 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <signupform></signupform>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import signupform from '@/components/SignUpForm.vue'
 
 export default {
   name: 'home',
   components: {
-    HelloWorld
+    signupform
   }
 }
 </script>
+
+<style lang="scss">
+  .home{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+
+  .join {
+    width: 100%;
+    max-width: 400px;
+  }
+</style>
+
