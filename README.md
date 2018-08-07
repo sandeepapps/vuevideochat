@@ -1,5 +1,11 @@
 # video-chat-app
 
+A simple multi-user video chat app with WebRTC.  
+    Functionality :
+    -	Pause Video 
+    -	Mute Audio
+    -	Share Room ID for invites 
+
 ## Project setup
 ```
 npm install
