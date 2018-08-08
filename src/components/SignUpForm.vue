@@ -20,6 +20,7 @@
 <script>
 import { mapMutations } from 'vuex'
 import uuid from 'uuid/v4'
+import SimpleWebRTC from 'simplewebrtc'
 
 export default {
   name: 'Home',
@@ -35,6 +36,12 @@ export default {
     }),
     join() {// set the users name and then forward us over to the chosen room
       //add validation if both the room and name have not been entered
+      window.webrtc = new SimpleWebRTC({
+        localVideEl: '',
+        remoteVideosEl: '',
+        autoRequestMedia: true,
+        nick: this.name
+      })
       this.setUserChatName(this.name);
       this.$router.push({
         name: 'room',
