@@ -6,31 +6,52 @@
                     <video ref="me"></video>
                 </div>
                 <div class="person__name">
-                    Mpilo
+                   {{ state.name }}
                 </div>
             </div>
+            <person v-for="client in clients" :key="client.peer.id"></person>
         </div>
     </div>
 </template>
 
 <script>
-    export default {
-        props: {
-            room: String
-        },
-        mounted () {
-            window.webrtc.joinRoom(this.room)
-            window.webrtc.on('localStream', (stream) => {
-                let attachMediaStream = require('attachmediastream')
+import { mapGetters, mapMutations } from 'vuex'
+import Person from './partials/Person'
 
-                attachMediaStream(stream, this.$refs.me, {
-                    autoplay: true,
-                    mirror: true,
-                    muted: true
-                })
-            })
-        }
-    }
+export default {
+  props: {
+    room: String
+  },
+  components: {
+      Person
+  },
+  computed: {
+    ...mapGetters({
+      state: 'getState',
+      clients: 'getClients'
+    })
+  },
+  methods: {
+    ...mapMutations({
+      addPeer: 'addPeer'
+    })
+  },
+  mounted () {
+    window.webrtc.joinRoom(this.room)
+    window.webrtc.on('videoAdded', (video, peer) => {
+      this.addPeer({ video, peer })
+    })
+    window.webrtc.on('localStream', (stream) => {
+      let attachMediaStream = require('attachmediastream')
+
+      attachMediaStream(stream, this.$refs.me, {
+        autoplay: true,
+        mirror: true,
+        muted: true
+      })
+    })
+  }
+}
 </script>
 
 <style lang="scss">
@@ -99,4 +120,3 @@ video {
     }
 }
 </style>
-

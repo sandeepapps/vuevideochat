@@ -5,3 +5,7 @@ export const getRoom = (state) => {
 export const getState = (state) => {
   return state.user
 }
+
+export const getClients = (state) => {
+  return state.clients
+}

@@ -27,28 +27,28 @@ export default {
   data () {
     return {
       room: this.$route.query.room || uuid(),
-      name: '',
+      name: ''
     }
   },
   methods: {
     ...mapMutations({
       setUserChatName: 'setUserChatName'
     }),
-    join() {// set the users name and then forward us over to the chosen room
-      //add validation if both the room and name have not been entered
+    join () { // set the users name and then forward us over to the chosen room
+      // add validation if both the room and name have not been entered
       window.webrtc = new SimpleWebRTC({
         localVideEl: '',
         remoteVideosEl: '',
         autoRequestMedia: true,
         nick: this.name
       })
-      this.setUserChatName(this.name);
+      this.setUserChatName(this.name)
       this.$router.push({
         name: 'room',
         params: {
           room: this.room
         }
-      });
+      })
       // console.log(this.name);
     }
   }
