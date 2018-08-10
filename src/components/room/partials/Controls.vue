@@ -1,17 +1,42 @@
 <template>
   <ul class="controls">
       <li class="controls__item">
-          <a href="" class="controls__link">Mute Me</a>
+        <a href="" class="controls__link" v-if="state.muted" @click.prevent="unmuteMe">
+            Unmute Me
+        </a>
+        <a href="" class="controls__link" v-else @click.prevent="muteMe">
+            Mute Me
+        </a>
       </li>
       <li class="controls__item">
-          <a href="" class="controls__link">Pause Video</a>
+        <a href="" class="controls__link">
+            Pause Video
+        </a>
       </li>
   </ul>
 </template>
 
 <script>
+import { mapGetters, mapMutations } from 'vuex'
 export default {
-
+    computed: {
+        ...mapGetters({
+            state: 'getState'
+        })
+    },
+    methods: {
+        ...mapMutations({
+            setMuted: 'setMuted'
+        }),
+        muteMe () {
+            window.webrtc.mute()
+            this.setMuted(true)
+        },
+        unmuteMe () {
+            window.webrtc.unmute()
+            this.setMuted(false)
+        },
+    }
 }
 </script>
 
