@@ -38,14 +38,14 @@ export default {
     join () { // set the users name and then forward us over to the chosen room
       // add validation if both the room and name have not been entered
       this.setUserChatName(this.name)
-      
+
       window.webrtc = new SimpleWebRTC({
         localVideEl: '',
         remoteVideosEl: '',
         autoRequestMedia: true,
         nick: this.name
       })
-      
+
       this.$router.push({
         name: 'room',
         params: {

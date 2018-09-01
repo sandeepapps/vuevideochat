@@ -8,12 +8,12 @@
 </template>
 
 <script>
-    export default {
-        props: {
-            client: Object
-        },
-        mounted () {
-            this.$refs.person.appendChild(this.client.video)
-        }
-    }
+export default {
+  props: {
+    client: Object
+  },
+  mounted () {
+    this.$refs.person.appendChild(this.client.video)
+  }
+}
 </script>

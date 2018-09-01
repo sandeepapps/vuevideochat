@@ -22,34 +22,34 @@
 <script>
 import { mapGetters, mapMutations } from 'vuex'
 export default {
-    computed: {
-        ...mapGetters({
-            state: 'getState'
-        })
+  computed: {
+    ...mapGetters({
+      state: 'getState'
+    })
+  },
+  methods: {
+    ...mapMutations({
+      setMuted: 'setMuted',
+      setPaused: 'setPaused'
+    }),
+    muteMe () {
+      window.webrtc.mute()
+      this.setMuted(true)
     },
-    methods: {
-        ...mapMutations({
-            setMuted: 'setMuted',
-            setPaused: 'setPaused'
-        }),
-        muteMe () {
-            window.webrtc.mute()
-            this.setMuted(true)
-        },
-        unmuteMe () {
-            window.webrtc.unmute()
-            this.setMuted(false)
-        },
-        pauseMe () {
-            window.webrtc.pause()
-            this.setPaused(true)
-        },
-        unpauseMe () {
-            window.webrtc.resume()
-            this.setPaused(false)
-            this.setMuted(false)
-        }
+    unmuteMe () {
+      window.webrtc.unmute()
+      this.setMuted(false)
+    },
+    pauseMe () {
+      window.webrtc.pause()
+      this.setPaused(true)
+    },
+    unpauseMe () {
+      window.webrtc.resume()
+      this.setPaused(false)
+      this.setMuted(false)
     }
+  }
 }
 </script>
 
